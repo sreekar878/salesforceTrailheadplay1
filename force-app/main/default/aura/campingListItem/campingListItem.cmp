@@ -1,0 +1,18 @@
+<aura:component >
+    <aura:attribute name="newItem" type= "Camping_Item__c"></aura:attribute>
+    <lightning:card>
+       <p>
+          <p>Name : {!v.newItem.Name}</p>
+          <p>Price : <lightning:formattedNumber value="{!v.newItem.Price__c}" style="currency"/></p>
+          <p>Quantity : <lightning:formattedNumber value="{!v.newItem.Quantity__c}" /></p>
+          <p>   <lightning:input type="toggle"
+                         label="Packed?"
+                         name="reimbursed"
+                         checked="{!v.newItem.Packed__c}" />
+          </p>
+        </p>
+        <lightning:button label = "Packed!" onClick = "{!c.packItem}" disabled = "false"> </lightning:button>
+        <p>{!v.newItem}</p>
+    </lightning:card>
+    
+</aura:component>

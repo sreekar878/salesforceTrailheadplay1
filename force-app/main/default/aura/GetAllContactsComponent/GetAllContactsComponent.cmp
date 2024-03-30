@@ -1,0 +1,5 @@
+<aura:component>
+    <div>
+        <h1>Welocome to AURA</h1>
+    </div>
+</aura:component>

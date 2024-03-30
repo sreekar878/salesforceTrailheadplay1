@@ -1,0 +1,52 @@
+<aura:component  controller = "CampingListController">
+    
+    <aura:attribute name="items" type= "Camping_Item__c[]" />
+    <aura:attribute name="newItem" type= "Camping_Item__c" default = "{ 
+                                                                       'sObjectType' : 'Camping_Item__c',
+                                                                       'Quantity__c': 0,
+                                                                       'Price__c': 0
+                                                                      }" />
+    
+    <aura:handler name= "doinit" action = "{!c.doInit}" value = "{!this}" />
+        
+    <div>
+       <p class="slds-p-horizontal_small">
+            <aura:iteration items="{!v.items}" var="itm">
+                <c:campingListItem newItem="{!itm}"/>
+            </aura:iteration>
+        </p>
+    </div>
+     <lightning:card>
+         <p>
+          <form class="slds-form_stacked">
+            <lightning:input aura:id="item" label="Name"
+                             name="name"
+                             value="{!v.newItem.Name}"
+                             required="true"/>
+            <lightning:input type="number" aura:id="item" label="Quantity"
+                             name="quantity"
+                             min="1"
+                             value="{!v.newItem.Quantity__c}"
+                             />
+            <lightning:input aura:id="item" label="Price"
+                             name="price"
+                             formatter="currency"
+                             value="{!v.newItem.Price__c}"
+                             />
+            <lightning:button label="Submit"
+                              class="slds-m-top_medium"
+                              variant="brand"
+                              onclick="{!c.clickCreateItem}"/>
+          </form>
+         </p>
+	<div>
+       <p>
+         <ol>
+            <li>Bug Spray</li>
+            <li>Bear Repellant</li>
+            <li>Goat Food</li>
+         </ol>
+       </p>
+    </div>
+   </lightning:card>
+</aura:component>
